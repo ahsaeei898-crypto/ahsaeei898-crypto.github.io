@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แนะนำตัว 5 หน้าในที่เดียว</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            color: #333;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            position: relative;
+            width: 100%;
+            height: auto;
+            min-height: 400px;
+        }
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            transform: translateY(20px);
+        }
+
+        .page.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .next-btn, .prev-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-btn:hover, .prev-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="page1" class="page active">
+            <div class="content">
+                <h1>สวัสดีครับ! ยินดีที่ได้รู้จัก ✌️</h1>
+                <p>ยินดีต้อนรับสู่เว็บไซต์แนะนำตัวของผมครับ เว็บไซต์นี้จะพาคุณไปรู้จักกับผมให้มากขึ้น</p>
+                <button class="next-btn" onclick="showPage(2)">เริ่มต้น</button>
+            </div>
+        </div>
+
+        <div id="page2" class="page">
+            <div class="content">
+                <h2>ประวัติส่วนตัว</h2>
+                <p>ผมชื่อ... (ใส่ชื่อของคุณ)... อายุ... ปี และสนใจในเรื่อง... (ระบุสิ่งที่สนใจ)...</p>
+                <button class="prev-btn" onclick="showPage(1)">ย้อนกลับ</button>
+                <button class="next-btn" onclick="showPage(3)">หน้าถัดไป</button>
+            </div>
+        </div>
+
+        <div id="page3" class="page">
+            <div class="content">
+                <h2>การศึกษา</h2>
+                <p>ผมจบการศึกษาจาก... (ใส่ชื่อสถาบัน)... ในสาขาวิชา... (ใส่ชื่อสาขา)...</p>
+                <button class="prev-btn" onclick="showPage(2)">ย้อนกลับ</button>
+                <button class="next-btn" onclick="showPage(4)">หน้าถัดไป</button>
+            </div>
+        </div>
+
+        <div id="page4" class="page">
+            <div class="content">
+                <h2>งานอดิเรกและความสนใจ</h2>
+                <p>ในเวลาว่าง ผมชอบ... (ใส่อธิบายงานอดิเรก)... และหลงใหลใน... (ใส่อธิบายความสนใจ)...</p>
+                <button class="prev-btn" onclick="showPage(3)">ย้อนกลับ</button>
+                <button class="next-btn" onclick="showPage(5)">หน้าถัดไป</button>
+            </div>
+        </div>
+        
+        <div id="page5" class="page">
+            <div class="content">
+                <h2>ช่องทางการติดต่อ</h2>
+                <p>หากคุณมีข้อสงสัยหรืออยากพูดคุย สามารถติดต่อผมได้ทาง... (ใส่ข้อมูลการติดต่อ เช่น อีเมล, โซเชียลมีเดีย)...</p>
+                <button class="prev-btn" onclick="showPage(4)">ย้อนกลับ</button>
+                <button class="next-btn" onclick="showPage(1)">กลับหน้าแรก</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageNumber) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            const activePage = document.getElementById('page' + pageNumber);
+            if (activePage) {
+                activePage.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
